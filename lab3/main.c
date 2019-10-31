@@ -16,8 +16,8 @@ int isInMemory(int pageRequest, Node *pageTable) {
     }
     Node* temp = pageTable->head;
     while(temp->next =! NULL) {
-        if(temp->page == pageRequest) {
-    if(alg == 2) temp->sc = 1;   //set lifeline to 1
+        if(temp->data == pageRequest) {
+          if(alg == 2) temp->sc = 1;   //set lifeline to 1
 		return 1;
         }
 	temp = temp->next;
