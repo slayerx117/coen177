@@ -9,7 +9,7 @@ struct Node {
 };
 
 struct List {
-  node * head;
+  Node * head;
 };
 
 Node * createnode(int data){
