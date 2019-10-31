@@ -1,3 +1,4 @@
+#include "linkedlist.h" 
 struct Node {
   int data;
   int sc;
