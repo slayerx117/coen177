@@ -2,15 +2,15 @@
 #include <stdlib.h>
 #include "linkedlist.h"
 
-struct Node {
+typedef struct Node {
   int data;
   int sc;
   struct Node * next;
-};
+}Node;
 
-struct List {
+typedef struct List {
   Node * head;
-};
+}List;
 
 Node * createnode(int data);
 
