@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include "linkedlist.h"
 
-typedef struct Node {
+typedef struct Nodes {
   int data;
   int sc;
   struct Node * next;
 }Node;
 
-typedef struct List {
+typedef struct Lists {
   Node * head;
 }List;
 
