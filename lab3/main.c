@@ -15,8 +15,8 @@ int isInMemory(int pageRequest, Node *pageTable) {
 	return 0;
     }
     Node* temp = pageTable->head;
-    while(temp->next =! NULL) {		
-        if(temp->page == pageRequest) {	
+    while(temp->next =! NULL) {
+        if(temp->page == pageRequest) {
 		updateSc(temp, 0);   //set lifeline to 1
 		free(temp);
 		return 1;
@@ -27,11 +27,11 @@ int isInMemory(int pageRequest, Node *pageTable) {
     return 0;
 }
 int parseAlg(int argc, char *argv[]){
- 	if(argc == 2){ 
+ 	if(argc == 2){
    		char* alg = argv[0];
 		if(strcmp(alg,"-fifo")) return 0;
-		if(strcmp(alg, "-lru")) return 1;		
- 		if(strcmp(alg, "-sc")) return 2;	
+		if(strcmp(alg, "-lru")) return 1;
+ 		if(strcmp(alg, "-sc")) return 2;
  	    	fprintf(stderr, "%s is an undefined algorithm type.\n", alg);
 		exit(-1);
 	}
@@ -40,18 +40,18 @@ int parseAlg(int argc, char *argv[]){
 	exit(-1);
 }
 int main(int argc, char *argv[]) {
-    //argument parsing 
-    int alg = parseAlg(argc, argv); 
-    int tableSize = parseSize(argc, argv);    
+    //argument parsing
+    int alg = parseAlg(argc, argv);
+    int tableSize = parseSize(argc, argv);
     //table creation
     int pageRequest, pageTableIndex = 0, numRequest = 0, numMisses = 0;
     Node *pageTable = NULL;
-    
+
     //file io creation
     char *input = NULL;
     FILE *access = fopen("./access.txt", "r");
     FILE *output = fopen("./output", "w");
-        
+
     //io loop
     while(fgets(input, 5, access)) {
         pageRequest = atoi(input);
@@ -67,32 +67,31 @@ int main(int argc, char *argv[]) {
             	pageTableIndex++;
 	    } else {
                 switch(alg)
-		{
-			case 0: // fifo
-				replaceTail(pageTable, pageRequest);		
-			case 1: // lru -> if not in memory, just replace
-				replaceTail(pageTable, pageRequest);
-			case 2: // sc
-				sc(pageTable, pageRequest);
-                 
-		}
-          }
+		                {
+			                   case 0: //fifo -> if page fault, just replace the least recently used page
+				                            replaceTail(pageTable, pageRequest);
+			                          case 1: // lru -> same as lru
+				                            replaceTail(pageTable, pageRequest);
+			                          case 2: // sc -> do second chance stuff
+				                            sc(pageTable, pageRequest);
+		                }
+            }
 	} else {// is in memory
-		if(alg == 1){ // lru -> in memory, move to front of list 
-			Node *temp = pageTable->head;
-			while(temp->next->next != NULL){
-				if(temp->next->page == pageRequest){
-					setNext(temp, next->next);
-					//deallocate temp->next
-				}
-			}
-			appendHead(pageTable, pageRequest);	
-		}
-		free(temp);
+		if(alg == 1){ // lru -> in memory, move to front of list
+			   Node *temp = pageTable->head;
+			   while(temp->next->next != NULL){
+				    if(temp->next->page == pageRequest){
+					     setNext(temp, next->next);
+					     //deallocate temp->next
+				    }
+			   }
+			   appendHead(pageTable, pageRequest);
+         free(temp);
+		  }
       }
     }
     fputs("Hit rate = %f\n", (numRequest-numMisses)/(double)numRequest, output);
-    fclose(access);   
+    fclose(access);
     fclose(output);
     free(input);
     free(pageTable);
