@@ -10,7 +10,7 @@ int parseSize(int argc, char *argv[]) {
     exit(-1);
 }
 
-int isInMemory(int pageRequest, node *pageTable) {
+int isInMemory(int pageRequest, Node *pageTable) {
     if(pageTable == NULL){
 	return 0;
     }
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     int tableSize = parseSize(argc, argv);
     //table creation
     int pageRequest, pageTableIndex = 0, numRequest = 0, numMisses = 0;
-    node *pageTable = NULL;
+    Node *pageTable = NULL;
 
     //file io creation
     char *input = NULL;

@@ -2,6 +2,6 @@
 #define ALGS_H
 #include "linkedlist.h"
 
-void sc(list* pagetable, int page);
+void sc(List* pagetable, int page);
 
 #endif //ALGS_H
