@@ -1,5 +1,5 @@
-#ifndef LINKEDLIST_HEADER
-#define LINKEDLIST_HEADER
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 
 typedef struct node Node;
 
@@ -14,4 +14,4 @@ void updateSc(Node *node, int val);
 void display(List * list);
 void destroy(List * list);
 
-#endif
+#endif //LINKEDLIST_H
