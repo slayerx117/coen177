@@ -1,6 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "linkedlist.h"
+struct Node {
+  int data;
+  int sc;
+  struct Node * next;
+};
+
+struct List{
+  Node * head;
+};
 
 Node * createnode(int data){
   Node * newNode = malloc(sizeof(Node));
