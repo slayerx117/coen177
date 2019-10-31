@@ -1,3 +1,4 @@
+#include "algs.h"
 void sc(List* pagetable, int page){
 	//find first page that isnt protected by sc, and replace it
 	//dont need to do all the linkedlist conditional stuff cus this function is only ever called when the list is full.
