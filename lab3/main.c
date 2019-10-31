@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "algs.c"
 int parseSize(int argc, char *argv[]) {
     int tableSize;
     if(argc == 2 && (tableSize = atoi(argv[1]))) {
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
         }
         numRequest++;
         if(!isInMemory(pageRequest, pageTable, tableSize)) {
-            fputs("Page %d caused a page fault.\n", pageRequest, output);
+            fprintf("Page %d caused a page fault.\n", pageRequest, output);
             numMisses++;
             if(pageTableIndex < tableSize) {
 		            appendHead(pageTable, pageReqest);
@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
            //isInMemory automatically updates the lifeline/second chance variable if the data is already in memory
         }
     }
-    fputs("Hit rate = %f\n", (numRequest-numMisses)/(double)numRequest, output);
+    fpritntf("Hit rate = %f\n", (numRequest-numMisses)/(double)numRequest, output);
     fclose(access);
     fclose(output);
     free(input);
