@@ -17,8 +17,7 @@ int isInMemory(int pageRequest, Node *pageTable) {
     Node* temp = pageTable->head;
     while(temp->next =! NULL) {
         if(temp->page == pageRequest) {
-		updateSc(temp, 0);   //set lifeline to 1
-		free(temp);
+    if(alg == 2) temp->sc = 1;   //set lifeline to 1
 		return 1;
         }
 	temp = temp->next;
@@ -63,32 +62,26 @@ int main(int argc, char *argv[]) {
             fputs("Page %d caused a page fault.\n", pageRequest, output);
             numMisses++;
             if(pageTableIndex < tableSize) {
-		appendHead(pageTable, pageReqest);
-            	pageTableIndex++;
+		            appendHead(pageTable, pageReqest);
+            	  pageTableIndex++;
 	    } else {
                 switch(alg)
 		                {
 			                   case 0: //fifo -> if page fault, just replace the least recently used page
 				                            replaceTail(pageTable, pageRequest);
-			                          case 1: // lru -> same as lru
+			                   case 1: // lru -> functionally same as fifo
 				                            replaceTail(pageTable, pageRequest);
-			                          case 2: // sc -> do second chance stuff
+			                   case 2: // sc -> do second chance stuff
 				                            sc(pageTable, pageRequest);
 		                }
             }
-	} else {// is in memory
-		if(alg == 1){ // lru -> in memory, move to front of list
-			   Node *temp = pageTable->head;
-			   while(temp->next->next != NULL){
-				    if(temp->next->page == pageRequest){
-					     setNext(temp, next->next);
-					     //deallocate temp->next
-				    }
-			   }
-			   appendHead(pageTable, pageRequest);
-         free(temp);
-		  }
-      }
+	       } else {// is in memory
+           if(alg == 1){ // lru -> in memory, move to front of list(make most recent)
+        	    delete(pageRequest);
+			        appendHead(pageTable, pageRequest);
+		       }
+           //isInMemory automatically updates the lifeline/second chance variable if the data is already in memory
+        }
     }
     fputs("Hit rate = %f\n", (numRequest-numMisses)/(double)numRequest, output);
     fclose(access);

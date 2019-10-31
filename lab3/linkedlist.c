@@ -8,7 +8,7 @@ struct node {
 };
 
 struct list {
-  Node * head; 
+  Node * head;
 };
 
 Node * createnode(int data);
@@ -35,23 +35,21 @@ List * makelist(){
 
 void display(List * list) {
   Node * current = list->head;
-  if(list->head == NULL) 
+  if(list->head == NULL)
     return;
-  
+
   for(; current != NULL; current = current->next) {
-    printf("%d\n", current->data);
+    printf("%d %d\n", current->data, current->sc);
   }
 }
-void updateSc(Node *node, int val){
-	node->sc = val;
-}
+
 void appendTail(int data, List * list){
   Node * current = NULL;
   if(list->head == NULL){
     list->head = createnode(data);
   }
   else {
-    current = list->head; 
+    current = list->head;
     while (current->next!=NULL){
       current = current->next;
     }
@@ -65,20 +63,20 @@ void appendHead(int data, List* list){
   list->head = newhead;
 }
 void delete(int data, List * list){
-  Node * current = list->head;            
-  Node * previous = current;           
-  while(current != NULL){           
-    if(current->data == data){      
+  Node * current = list->head;
+  Node * previous = current;
+  while(current != NULL){
+    if(current->data == data){
       previous->next = current->next;
       if(current == list->head)
         list->head = current->next;
       free(current);
       return;
-    }                               
-    previous = current;             
-    current = current->next;        
-  }                                 
-}                                   
+    }
+    previous = current;
+    current = current->next;
+  }
+}
 
 void destroy(List * list){
   Node * current = list->head;
@@ -90,4 +88,3 @@ void destroy(List * list){
   }
   free(list);
 }
-
