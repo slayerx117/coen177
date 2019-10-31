@@ -10,7 +10,7 @@ int parseSize(int argc, char *argv[]) {
     exit(-1);
 }
 
-int isInMemory(int pageRequest, Node *pageTable) {
+int isInMemory(int pageRequest, List *pageTable) {
     if(pageTable == NULL){
 	return 0;
     }
