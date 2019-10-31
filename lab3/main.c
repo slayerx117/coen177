@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "algs.c"
+#include "algs.h"
 int parseSize(int argc, char *argv[]) {
     int tableSize;
     if(argc == 2 && (tableSize = atoi(argv[1]))) {
