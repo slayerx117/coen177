@@ -12,8 +12,6 @@ struct list {
   node * head;
 };
 
-Node * createnode(int data);
-
 Node * createnode(int data){
   Node * newNode = malloc(sizeof(Node));
   if (!newNode) {
