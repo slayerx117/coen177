@@ -1,15 +1,15 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-typedef struct node {
+struct Node {
   int data;
   int sc;
   struct Node * next;
-} Node;
+};
 
-typedef struct list{
+struct List{
   Node * head;
-} List;
+};
 
 List * makelist();
 Node * createnode(int data);
