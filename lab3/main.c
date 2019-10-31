@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     int tableSize = parseSize(argc, argv);
     //table creation
     int pageRequest, pageTableIndex = 0, numRequest = 0, numMisses = 0;
-    Node *pageTable = NULL;
+    List *pageTable = NULL;
 
     //file io creation
     char *input = NULL;
