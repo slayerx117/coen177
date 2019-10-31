@@ -9,7 +9,7 @@ typedef struct node {
 }Node;
 
 typedef struct list {
-  Node * head;
+  node * head;
 }List;
 
 Node * createnode(int data);

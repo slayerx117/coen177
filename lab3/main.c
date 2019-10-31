@@ -10,11 +10,11 @@ int parseSize(int argc, char *argv[]) {
     exit(-1);
 }
 
-int isInMemory(int pageRequest, Node *pageTable) {
+int isInMemory(int pageRequest, node *pageTable) {
     if(pageTable == NULL){
 	return 0;
     }
-    Node* temp = pageTable->head;
+    node* temp = pageTable->head;
     while(temp->next =! NULL) {
         if(temp->page == pageRequest) {
     if(alg == 2) temp->sc = 1;   //set lifeline to 1
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     int tableSize = parseSize(argc, argv);
     //table creation
     int pageRequest, pageTableIndex = 0, numRequest = 0, numMisses = 0;
-    Node *pageTable = NULL;
+    node *pageTable = NULL;
 
     //file io creation
     char *input = NULL;

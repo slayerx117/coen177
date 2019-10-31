@@ -5,8 +5,8 @@ typedef struct node Node;
 
 typedef struct list List;
 
-List * makelist();
-Node * createnode(int data);
+list * makelist();
+node * createnode(int data);
 void appendHead(int data, List * list);
 void appendTail(int data, List * list);
 void delete(int data, List * list);
