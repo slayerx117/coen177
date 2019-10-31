@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "linkedlist.h"
-struct node {
+struct Node {
   int data;
   int sc;
   struct node * next;
 };
 
-struct list {
+struct List {
   Node * head;
 };
 
