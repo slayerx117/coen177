@@ -10,7 +10,7 @@ int parseSize(int argc, char *argv[]) {
     exit(-1);
 }
 
-int isInMemory(int pageRequest, List *pageTable) {
+int isInMemory(int pageRequest, List *pageTable, int alg) {
     if(pageTable == NULL){
 	return 0;
     }
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
             continue;
         }
         numRequest++;
-        if(!isInMemory(pageRequest, pageTable)) {
+        if(!isInMemory(pageRequest, pageTable, alg)) {
             fprintf("Page %d caused a page fault.\n", pageRequest, output);
             numMisses++;
             if(pageTableIndex < tableSize) {
