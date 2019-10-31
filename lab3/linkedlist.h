@@ -4,9 +4,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node Node;
+typedef struct Node{
+  int data;
+  int sc;
+  struct Node * next;
+} Node;
 
-typedef struct List List;
+typedef struct List{
+  Node * head;
+} List;
 
 List * makelist();
 Node * createnode(int data);
