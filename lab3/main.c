@@ -62,9 +62,9 @@ int main(int argc, char *argv[]) {
             fprintf("Page %d caused a page fault.\n", pageRequest, output);
             numMisses++;
             if(pageTableIndex < tableSize) {
-		            appendHead(pageTable, pageReqest);
+		            appendHead(pageTable, pageRequest);
             	  pageTableIndex++;
-	    } else {
+	          } else {
                 switch(alg)
 		                {
 			                   case 0: //fifo -> if page fault, just replace the least recently used page
