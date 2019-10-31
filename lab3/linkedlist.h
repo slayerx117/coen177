@@ -1,9 +1,9 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-typedef struct Node Node;
+typedef struct node Node;
 
-typedef struct List List;
+typedef struct list List;
 
 List * makelist();
 Node * createnode(int data);
