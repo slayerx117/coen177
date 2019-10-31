@@ -14,7 +14,7 @@ int isInMemory(int pageRequest, Node *pageTable) {
     if(pageTable == NULL){
 	return 0;
     }
-    node* temp = pageTable->head;
+    Node* temp = pageTable->head;
     while(temp->next =! NULL) {
         if(temp->page == pageRequest) {
     if(alg == 2) temp->sc = 1;   //set lifeline to 1
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
             continue;
         }
         numRequest++;
-        if(!isInMemory(pageRequest, pageTable, tableSize)) {
+        if(!isInMemory(pageRequest, pageTable)) {
             fprintf("Page %d caused a page fault.\n", pageRequest, output);
             numMisses++;
             if(pageTableIndex < tableSize) {
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
             }
 	       } else {// is in memory
            if(alg == 1){ // lru -> in memory, move to front of list(make most recent)
-        	    delete(pageRequest);
+        	    delete(pageRequest, pageTable);
 			        appendHead(pageTable, pageRequest);
 		       }
            //isInMemory automatically updates the lifeline/second chance variable if the data is already in memory
