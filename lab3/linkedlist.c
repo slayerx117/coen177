@@ -1,4 +1,4 @@
-#include "linkedlist.h" 
+#include "linkedlist.h"
 Node * createnode(int data){
   Node * newNode = malloc(sizeof(Node));
   if (!newNode) {
@@ -73,4 +73,9 @@ void destroy(List * list){
     current = next;
   }
   free(list);
+}
+void replaceTail(List * list, int data){
+    Node * current = list->head;
+    while(current->next != NULL);
+    current->data = data;
 }

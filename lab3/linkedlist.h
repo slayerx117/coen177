@@ -19,8 +19,8 @@ Node * createnode(int data);
 void appendHead(int data, List * list);
 void appendTail(int data, List * list);
 void delete(int data, List * list);
-void updateSc(Node *node, int val);
 void display(List * list);
 void destroy(List * list);
+void replaceTail(List * list, int data);
 
 #endif //LINKEDLIST_H
